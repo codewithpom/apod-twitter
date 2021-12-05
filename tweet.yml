@@ -1,0 +1,19 @@
+name: "Tweet the Quote"
+
+on:
+  push  
+    
+
+jobs:
+  tweet:
+    name: 'Install dependencies and make the tweet'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+  
+      - name: Run the file
+        run: python main.py ${{ secrets.TOKEN }} ${{ secrets.TOKEN_SECRET }} ${{ secrets.CONSUMER_KEY }} ${{ secrets.CONSUMER_SECRET }}
