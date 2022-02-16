@@ -18,3 +18,6 @@ jobs:
   
       - name: Run the file
         run: python main.py ${{ secrets.TOKEN }} ${{ secrets.TOKEN_SECRET }} ${{ secrets.CONSUMER_KEY }} ${{ secrets.CONSUMER_SECRET }}
+        
+      - name: Keep alive
+        uses: gautamkrishnar/keepalive-workflow@master
