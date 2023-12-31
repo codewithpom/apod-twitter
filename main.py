@@ -36,10 +36,14 @@ def download_file(url):
 
 
 def make_tweet():
+    client = tweepy.Client(consumer_key=consumer_key,
+                       consumer_secret=consumer_secret,
+                       access_token=token,
+                       access_token_secret=token_secret)
     hash_tag = "#astronomy #spaceshost #NASA #images"
     file_path = download_file(data['hdurl'])
     media = api.media_upload(file_path)
-    api.update_status(status=f"Today's Astronomical Picture of the day\n{hash_tag}", media_ids=[media.media_id])
+    client.create_tweet(text=f"Today's Astronomical Picture of the day\n{hash_tag}", media_ids=[media.media_id])
 
     
     print("Made POST !!!!!!!!")
